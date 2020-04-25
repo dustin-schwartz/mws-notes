@@ -3,6 +3,7 @@ Here are my reference notes for the Google Mobile Web Specialist Certification t
 
 ## Resources
 
+- [Study Guide: Mobile Web Specialist Certification](https://developers.google.com/certification/mobile-web-specialist/study-guide)
 - [PWA Training Gitub](https://github.com/google-developer-training/pwa-training-labs)
 
 ## Legend
@@ -28,7 +29,7 @@ const element = document.getElementById('id');
 const elements = document.getElementsByClassName('class');
 ```
 
-**Base html setup**
+##### Base html setup
 
 ```html
 <!DOCTYPE html>
@@ -44,7 +45,7 @@ const elements = document.getElementsByClassName('class');
 </html>
 ```
 
-**[CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)**
+##### [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
 
 ```css
 /* Autofit Layout */
@@ -59,8 +60,21 @@ const elements = document.getElementsByClassName('class');
   grid-template-rows: 25% 100px 1fr;
 }
 ```
+##### [CSS Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 
-**[Basic CSS Media Query](https://www.w3schools.com/cssref/css3_pr_mediaquery.asp)**
+```css
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+}
+.item {
+  flex: 1 1 fit-content;
+}
+```
+
+##### [Basic CSS Media Query](https://www.w3schools.com/cssref/css3_pr_mediaquery.asp)
 
 ```css
 @media screen and (min-width: 400px) {
@@ -70,7 +84,7 @@ const elements = document.getElementsByClassName('class');
 }
 ```
 
-**[Responsive Image](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)**
+##### [Responsive Image](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)
 
 ```html
 <img srcset="img-480w.jpg 480w,
@@ -81,13 +95,39 @@ const elements = document.getElementsByClassName('class');
      alt="Example Image">
 ```
 
+##### [Video Tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video)
+
+```html
+<!-- Single Source -->
+<video src="file.mp4" type="video/mp4" height="600" width="800" poster="image.png" preload="auto" controls autoplay muted loop />
+<!-- Mulitple Source -->
+<video controls>
+    <source src="video.mp4" type="video/mp4" />
+    <source src="video.avi" type="video/avi"/>
+</video>
+```
+
+##### [Audio Tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio)
+
+```html
+<figure>
+    <figcaption>Listen to the T-Rex:</figcaption>
+    <audio
+        controls
+        src="/media/examples/t-rex-roar.mp3">
+            Your browser does not support the
+            <code>audio</code> element.
+    </audio>
+</figure>
+```
+
 ### Performance optimization and caching
 
 #### Web Workers
 
 Has to be an external file. Message is used to pass data.
 
-[Basic example from video.](https://github.com/dustin-schwartz/mws-notes#basic-website-layout-and-styling)
+[Basic example from video.](https://github.com/GoogleChromeLabs/ui-element-samples/tree/gh-pages/web-workers)
 
 ```js
 /* Set and use worker */
