@@ -9,7 +9,7 @@ Here are my reference notes for the Google Mobile Web Specialist Certification t
 ## Legend
 
 - [Basic website layout and styling](#basic-website-layout-and-styling)
-- Front end networking
+- [Front end networking - Fetch](#front-end-networking)
 - Accessibility
 - Progressive Web Apps
 - [Performance optimization and caching](#performance-optimization-and-caching)
@@ -121,7 +121,46 @@ const elements = document.getElementsByClassName('class');
 </figure>
 ```
 
+### Front end networking
+
 ### Performance optimization and caching
+
+##### [Fetch JSON](https://codelabs.developers.google.com/codelabs/pwa-fetch/index.html?index=..%2F..dev-pwa-training#2)
+```js
+function fetchJSON() {
+  fetch('examples/non-existent.json')
+    .then(validateResponse)
+    .then(logResult)
+    .catch(logError);
+}
+```
+
+##### [Head Request](https://codelabs.developers.google.com/codelabs/pwa-fetch/index.html?index=..%2F..dev-pwa-training#5)
+```js
+function headRequest() {
+  fetch('examples/words.txt', {
+    method: 'HEAD'
+  })
+  .then(validateResponse)
+  .then(readResponseAsText)
+  .then(logResult)
+  .catch(logError);
+}
+```
+
+##### [Post Form, No CORS](https://codelabs.developers.google.com/codelabs/pwa-fetch/index.html?index=..%2F..dev-pwa-training#7)
+```js
+function postRequest() {
+  const formData = new FormData(document.getElementById('msg-form'));
+  fetch('http://localhost:5001/', {
+    method: 'POST',
+    body: formData,
+    mode: 'no-cors'
+  })
+    .then(logResult)
+    .catch(logError);
+}
+```
 
 #### Web Workers
 
