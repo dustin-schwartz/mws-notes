@@ -12,7 +12,7 @@ Here are my reference notes for the Google Mobile Web Specialist Certification t
 - [Basic website layout and styling](#basic-website-layout-and-styling)
 - [Front end networking - Fetch](#front-end-networking)
 - [Accessibility](#accessibility)
-- Progressive Web Apps
+- [Progressive Web Apps](#progressive-web-apps)
 - [Performance optimization and caching](#performance-optimization-and-caching)
     - [Web Workers](#web-workers)
 - Testing and debugging
@@ -124,18 +124,6 @@ const elements = document.getElementsByClassName('class');
 
 ### Front end networking
 
-### Accessibility
-
-##### [ARIA](https://developers.google.com/web/fundamentals/accessibility/semantics-aria)
-
-##### [Skip Navigation](https://webaim.org/techniques/skipnav/)
-
-```html
-<a href="#maincontent">Skip to main content</a>
-```
-
-### Performance optimization and caching
-
 ##### [Fetch JSON](https://codelabs.developers.google.com/codelabs/pwa-fetch/index.html?index=..%2F..dev-pwa-training#2)
 ```js
 function fetchJSON() {
@@ -172,6 +160,23 @@ function postRequest() {
     .catch(logError);
 }
 ```
+
+### Accessibility
+
+##### ARIA
+
+- [ARIA Docs](https://developers.google.com/web/fundamentals/accessibility/semantics-aria)
+- [aria-live="off/polite/assertive"](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions)
+
+##### [Skip Navigation](https://webaim.org/techniques/skipnav/)
+
+```html
+<a href="#maincontent">Skip to main content</a>
+```
+
+### Progressive Web Apps
+
+### Performance optimization and caching
 
 #### Web Workers
 
