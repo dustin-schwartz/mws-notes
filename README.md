@@ -5,12 +5,13 @@ Here are my reference notes for the Google Mobile Web Specialist Certification t
 
 - [Study Guide: Mobile Web Specialist Certification](https://developers.google.com/certification/mobile-web-specialist/study-guide)
 - [PWA Training Gitub](https://github.com/google-developer-training/pwa-training-labs)
+- [Yahya Elharony Guide](https://github.com/elharony/google-mobile-web-specialist-certification-guide)
 
 ## Legend
 
 - [Basic website layout and styling](#basic-website-layout-and-styling)
 - [Front end networking - Fetch](#front-end-networking)
-- Accessibility
+- [Accessibility](#accessibility)
 - Progressive Web Apps
 - [Performance optimization and caching](#performance-optimization-and-caching)
     - [Web Workers](#web-workers)
@@ -122,6 +123,16 @@ const elements = document.getElementsByClassName('class');
 ```
 
 ### Front end networking
+
+### Accessibility
+
+##### [ARIA](https://developers.google.com/web/fundamentals/accessibility/semantics-aria)
+
+##### [Skip Navigation](https://webaim.org/techniques/skipnav/)
+
+```html
+<a href="#maincontent">Skip to main content</a>
+```
 
 ### Performance optimization and caching
 
