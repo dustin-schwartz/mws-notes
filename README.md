@@ -304,6 +304,7 @@ self.addEventListener('fetch', event => {
   ]
 }
 ```
+
 ##### Head Tags
 ```html
 <link rel="manifest" href="manifest.json">
@@ -328,6 +329,129 @@ self.addEventListener('fetch', event => {
 <link rel="apple-touch-icon" sizes="384x384" href="/images/touch/icon-384x384.png">
 <link rel="icon" sizes="512x512" href="/images/touch/icon-512x512.png">
 <link rel="apple-touch-icon" sizes="512x512" href="/images/touch/icon-512x512.png">
+```
+
+##### Cache App Shell
+
+Manually
+```js
+var cacheName = 'shell-content';
+var filesToCache = [
+  '/css/styles.css',
+  '/js/scripts.js',
+  '/images/logo.svg',
+
+  '/offline.html',
+
+  '/',
+];
+
+self.addEventListener('install', function(e) {
+  console.log('[ServiceWorker] Install');
+  e.waitUntil(
+    caches.open(cacheName).then(function(cache) {
+      console.log('[ServiceWorker] Caching app shell');
+      return cache.addAll(filesToCache);
+    })
+  );
+});
+```
+
+Pre-Cache
+```js
+gulp.task('generate-service-worker', function(callback) {
+  var path = require('path');
+  var swPrecache = require('sw-precache');
+  var rootDir = 'app';
+
+  swPrecache.write(path.join(rootDir, 'service-worker.js'), {
+    staticFileGlobs: [rootDir + '/**/*.{js,html,css,png,jpg,gif}'],
+    stripPrefix: rootDir
+  }, callback);
+});
+```
+
+#### [Workbox](https://developers.google.com/web/tools/workbox)
+
+```js
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.4.1/workbox-sw.js');
+
+if (workbox) {
+  console.log(`Yay! Workbox is loaded 🎉`);
+
+  workbox.precaching.precacheAndRoute([]);
+
+  workbox.routing.registerRoute(
+  /(.*)articles(.*)\.(?:png|gif|jpg)/,
+  workbox.strategies.cacheFirst({
+    cacheName: 'images-cache',
+    plugins: [
+      new workbox.expiration.Plugin({
+        maxEntries: 50,
+        maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
+      })
+    ]
+  })
+
+  workbox.routing.registerRoute(
+    /(.*)icon(.*)/,
+    workbox.strategies.staleWhileRevalidate({
+      cacheName: 'icon-cache',
+      plugins: [
+        new workbox.expiration.Plugin({
+          maxEntries: 5,
+          maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
+        })
+      ]
+    })
+  );
+);
+
+} else {
+  console.log(`Boo! Workbox didn't load 😬`);
+}
+```
+
+##### Build manifest with gulp
+```js
+const buildSw = () => {
+  return workboxBuild.injectManifest({
+    swSrc: 'src/sw.js',
+    swDest: 'build/sw.js',
+    globDirectory: 'build',
+    globPatterns: [
+      '**\/*.css',
+      'index.html',
+      'js\/animation.js',
+      'images\/home\/*.jpg',
+      'images\/icon\/*.svg',
+      'pages/offline.html',
+      'pages/404.html'
+    ]
+  }).then(resources => {
+    console.log(`Injected ${resources.count} resources for precaching, ` +
+        `totaling ${resources.size} bytes.`);
+  }).catch(err => {
+    console.log('Uh oh 😬', err);
+  });
+}
+gulp.task('build-sw', buildSw);
+```
+
+##### Network First
+```js
+const articleHandler = workbox.strategies.networkFirst({
+  cacheName: 'articles-cache',
+  plugins: [
+    new workbox.expiration.Plugin({
+      maxEntries: 50,
+    })
+  ]
+});
+
+workbox.routing.registerRoute(/(.*)article(.*)\.html/, args => {
+  return articleHandler.handle(args);
+});
 ```
 
 ### Performance optimization and caching
