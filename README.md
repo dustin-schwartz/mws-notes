@@ -13,7 +13,7 @@ Here are my reference notes for the Google Mobile Web Specialist Certification t
 - [Front end networking - Fetch](#front-end-networking)
 - [Accessibility](#accessibility)
 - [Progressive Web Apps](#progressive-web-apps)
-    - [Workbox][#workbox]
+    - [Workbox](#workbox)
     - [Service Worker](#service-worker)
 - [Performance optimization and caching](#performance-optimization-and-caching)
     - [Web Workers](#web-workers)
@@ -48,44 +48,13 @@ const elements = document.getElementsByClassName('class');
 </html>
 ```
 
-##### [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
+##### CSS
 
-```css
-/* Autofit Layout */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-gap: 1rem;
-}
-/* Grid Layout */
-.container {
-  grid-template-columns: 40px 50px auto 50px 40px;
-  grid-template-rows: 25% 100px 1fr;
-}
-```
-##### [CSS Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+- [Basic Examples](basic-layout/styles.css)
+- [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
+- [CSS Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+- [Basic CSS Media Query](https://www.w3schools.com/cssref/css3_pr_mediaquery.asp)
 
-```css
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: stretch;
-}
-.item {
-  flex: 1 1 fit-content;
-}
-```
-
-##### [Basic CSS Media Query](https://www.w3schools.com/cssref/css3_pr_mediaquery.asp)
-
-```css
-@media screen and (min-width: 400px) {
-  body {
-    background-color: lightgreen;
-  }
-}
-```
 
 ##### [Responsive Image](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)
 

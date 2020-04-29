@@ -1,0 +1,29 @@
+/* Autofit Layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 1rem;
+}
+/* Grid Layout */
+.container {
+  grid-template-columns: 40px 50px auto 50px 40px;
+  grid-template-rows: 25% 100px 1fr;
+}
+
+/* Flexbox */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+}
+.item {
+  flex: 1 1 fit-content;
+}
+
+/* Basic Media Querty */
+@media screen and (min-width: 400px) {
+  body {
+    background-color: lightgreen;
+  }
+}
