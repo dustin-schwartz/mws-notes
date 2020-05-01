@@ -16,6 +16,7 @@ Here are my reference notes for the Google Mobile Web Specialist Certification t
     - [Workbox](#workbox)
     - [Service Worker](#service-worker)
 - [Performance optimization and caching](#performance-optimization-and-caching)
+    - [IndexDB API](#indexdb-api)
     - [Web Workers](#web-workers)
 - Testing and debugging
 - ES2015 concepts and syntax
@@ -394,6 +395,11 @@ workbox.routing.registerRoute(/(.*)article(.*)\.html/, args => {
 ```
 
 ### Performance optimization and caching
+
+#### IndexDB API
+
+- [IndexDB Library](https://github.com/jakearchibald/idb)
+- [createObjectStore](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/createObjectStore)
 
 #### Web Workers
 
