@@ -398,6 +398,7 @@ workbox.routing.registerRoute(/(.*)article(.*)\.html/, args => {
 
 #### IndexDB API
 
+- [Google PWA Example](https://codelabs.developers.google.com/codelabs/pwa-indexed-db/index.html?index=..%2F..dev-pwa-training#3)
 - [IndexDB Library](https://github.com/jakearchibald/idb)
 - [createObjectStore](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/createObjectStore)
 
