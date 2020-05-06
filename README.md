@@ -17,6 +17,7 @@ Here are my reference notes for the Google Mobile Web Specialist Certification t
     - [Service Worker](#service-worker)
 - [Performance optimization and caching](#performance-optimization-and-caching)
     - [IndexDB API](#indexdb-api)
+    - [Resource Prioritization](#resource-prioritization)
     - [Web Workers](#web-workers)
 - Testing and debugging
 - ES2015 concepts and syntax
@@ -401,6 +402,26 @@ workbox.routing.registerRoute(/(.*)article(.*)\.html/, args => {
 - [Google PWA Example](https://codelabs.developers.google.com/codelabs/pwa-indexed-db/index.html?index=..%2F..dev-pwa-training#3)
 - [IndexDB Library](https://github.com/jakearchibald/idb)
 - [createObjectStore](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/createObjectStore)
+
+#### [Resource Prioritization](https://developers.google.com/web/fundamentals/performance/resource-prioritization)
+In general, try to use preload wherever you can, as it’s a more comprehensive performance tweak, but do keep preconnect in your toolbelt for the edge cases. Let’s look at a couple of them.
+
+Preload Resources - Critical Path CSS and JavaScript
+```html
+<link rel="preload" as="script" href="super-important.js">
+<link rel="preload" as="style" href="critical.css">
+<link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" href="myfont.woff2">
+```
+
+Preconnect - Informs the browser that your page intends to establish a connection to another origin, and that you’d like the process to start as soon as possible. Use dns-prefetch as fallback, less effective but better support.
+```html
+<link rel="preconnect" href="https://example.com">
+```
+
+Prefetch - Resources the user doesn't need yet, but probably will soon.
+```html
+<link rel="prefetch" href="page-2.html">
+```
 
 #### Web Workers
 
