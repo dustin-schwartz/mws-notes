@@ -20,7 +20,8 @@ Here are my reference notes for the Google Mobile Web Specialist Certification t
     - [Resource Prioritization](#resource-prioritization)
     - [Web Workers](#web-workers)
 - Testing and debugging
-- ES2015 concepts and syntax
+- [ES2015 concepts and syntax](#es2015)
+    - [Promises](#promises)
 - Mobile web forms
 
 ## Study Guide Sections
@@ -442,3 +443,50 @@ addEventListener('message', (d) => {
   postMessage(imageData, [imageData.data.buffer])
 });
 ```
+
+### ES2015
+
+#### Promises
+
+Example Fucntion
+```js
+function getImageName(country) {
+  country = country.toLowerCase();
+  const promiseOfImageName = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (country === 'spain' || country === 'chile' || country === 'peru') {
+        resolve(country + '.png');
+      } else {
+        reject(Error('Didn\'t receive a valid country name!'));
+      }
+    }, 1000);
+  });
+  console.log(promiseOfImageName);
+  return promiseOfImageName;    
+}
+```
+
+Then/Catch Example
+```js
+var jsonPromise = new Promise(function(resolve, reject) {
+  // JSON.parse throws an error if you feed it some
+  // invalid JSON, so this implicitly rejects:
+  resolve(JSON.parse("This ain't JSON"));
+});
+
+jsonPromise.then(function(data) {
+  // This never happens:
+  console.log("It worked!", data);
+}).catch(function(err) {
+  // Instead, this happens:
+  console.log("It failed!", err);
+})
+```
+
+##### Signature	Description
+- Promise.resolve(promise); -	Returns promise (only if promise.constructor == Promise)
+- Promise.resolve(thenable); -	Make a new promise from the thenable. A thenable is promise-like in as far as it has a `then()` method.
+- Promise.resolve(obj); -	Make a promise that fulfills to obj. in this situation.
+- Promise.reject(obj); -	Make a promise that rejects to obj. For consistency and debugging (e.g. stack traces), obj should be an instanceof Error.
+- Promise.all(array); -	Make a promise that fulfills when every item in the array fulfills, and rejects if (and when) any item rejects. Each array item is passed to Promise.resolve, so the array can be a mixture of promise-like objects and other objects. The fulfillment value is an array (in order) of fulfillment values. The rejection value is the first rejection value.
+- Promise.race(array); - Make a Promise that fulfills as soon as any item fulfills, or rejects as soon as any item rejects, whichever happens first.
