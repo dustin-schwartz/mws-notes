@@ -41,7 +41,7 @@ const elements = document.getElementsByClassName('class');
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <title>Basic Example</title>
     <link rel="stylesheet" href="styles/main.css">
@@ -61,6 +61,7 @@ const elements = document.getElementsByClassName('class');
 
 ##### [Responsive Image](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)
 
+Srcset & Sizes
 ```html
 <img srcset="img-480w.jpg 480w,
              img-800w.jpg 800w"
@@ -68,6 +69,15 @@ const elements = document.getElementsByClassName('class');
             800px"
      src="img-800w.jpg"
      alt="Example Image">
+```
+
+Picture
+```html
+<picture>
+    <source media="(max-width: 799px)" srcset="example-480w-portrait.jpg">
+    <source media="(min-width: 800px)" srcset="example-800w.jpg">
+    <img src="example-800w.jpg" alt="Example">
+</picture>
 ```
 
 ##### [Video Tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video)
@@ -94,6 +104,52 @@ const elements = document.getElementsByClassName('class');
             <code>audio</code> element.
     </audio>
 </figure>
+```
+
+##### [Touch](https://developers.google.com/web/fundamentals/design-and-ux/input/touch)
+
+Touch CSS
+```css
+.btn {
+  background-color: #4285f4;
+}
+
+.btn:hover {
+  background-color: #296CDB;
+}
+
+.btn:focus {
+  background-color: #0F52C1;
+
+  /* The outline parameter suppresses the border
+  color / outline when focused */
+  outline: 0;
+}
+
+.btn:active {
+  background-color: #0039A8;
+}
+```
+
+Event Listeners
+```js
+// Check if pointer events are supported.
+if (window.PointerEvent) {
+  // Add Pointer Event Listener
+  swipeFrontElement.addEventListener('pointerdown', this.handleGestureStart, true);
+  swipeFrontElement.addEventListener('pointermove', this.handleGestureMove, true);
+  swipeFrontElement.addEventListener('pointerup', this.handleGestureEnd, true);
+  swipeFrontElement.addEventListener('pointercancel', this.handleGestureEnd, true);
+} else {
+  // Add Touch Listener
+  swipeFrontElement.addEventListener('touchstart', this.handleGestureStart, true);
+  swipeFrontElement.addEventListener('touchmove', this.handleGestureMove, true);
+  swipeFrontElement.addEventListener('touchend', this.handleGestureEnd, true);
+  swipeFrontElement.addEventListener('touchcancel', this.handleGestureEnd, true);
+
+  // Add Mouse Listener
+  swipeFrontElement.addEventListener('mousedown', this.handleGestureStart, true);
+}
 ```
 
 ### Front end networking
