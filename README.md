@@ -22,7 +22,7 @@ Here are my reference notes for the Google Mobile Web Specialist Certification t
 - Testing and debugging
 - [ES2015 concepts and syntax](#es2015)
     - [Promises](#promises)
-- Mobile web forms
+- [Mobile web forms](#mobile-web-forms)
 
 ## Study Guide Sections
 
@@ -589,3 +589,53 @@ jsonPromise.then(function(data) {
 - Promise.reject(obj); -	Make a promise that rejects to obj. For consistency and debugging (e.g. stack traces), obj should be an instanceof Error.
 - Promise.all(array); -	Make a promise that fulfills when every item in the array fulfills, and rejects if (and when) any item rejects. Each array item is passed to Promise.resolve, so the array can be a mixture of promise-like objects and other objects. The fulfillment value is an array (in order) of fulfillment values. The rejection value is the first rejection value.
 - Promise.race(array); - Make a Promise that fulfills as soon as any item fulfills, or rejects as soon as any item rejects, whichever happens first.
+
+### Mobile Web Forms
+
+[Forms Info](https://developers.google.com/web/fundamentals/design-and-ux/input/forms)
+
+- [HTML5 Inputs](https://developers.google.com/web/fundamentals/design-and-ux/input/forms#html5_input_types)
+- [Sample Form](https://googlesamples.github.io/web-fundamentals/fundamentals/design-and-ux/input/forms/order.html)
+
+##### Example
+```html
+<form role="form">
+  <fieldset>
+    <legend>Contact Info</legend>
+
+      <label for="frmFullName">Full Name</label>
+      <input type="text" name="name" id="frmFullName" placeholder="Full Name" required autocomplete="name" pattern="[A-Za-z]+">
+
+      <label for="frmEmail">Email</label>
+      <input type="email" name="email" id="frmEmail" placeholder="name@example.com" required autocomplete="email">
+
+      <label for="frmPhone">Phone</label>
+      <input type="tel" name="phone" id="frmPhone" placeholder="+1-555-555-1212" required autocomplete="tel">
+  </fieldset>
+
+  <fieldset>
+    <legend>Other Info</legend>
+
+    <label for="frmBirthday">Birthday</label>
+    <input type="datetime-local" name="birthday" id="frmBirthday">
+
+    <label for="frmFavColor">Favorite Color</label>
+    <input type="text" name="fav-color" id="frmFavColor" list="frmColorList">
+    <datalist id="frmColorList">
+      <option value="blue">
+      <option value="red">
+      <option value="green">
+    </datalist>
+  </fieldset>
+
+  <button>Submit</button>
+</form>
+<style>
+input:not(:focus):invalid {
+  background-color: #FFD9D9;
+}
+input:not(:focus):valid {
+  background-color: #D9FFD9;
+}
+</style>
+```
