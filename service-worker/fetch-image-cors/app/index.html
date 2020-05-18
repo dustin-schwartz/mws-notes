@@ -1,0 +1,32 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+  <meta charset="utf-8">
+  <title>Example</title>
+  <meta name="description" content="This is a very basic html page.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<h1>Request: <span id="requestUrl"></span></h1>
+	<button onclick="headRequest()">Fetch</button>
+	<p id="success"></p>
+	<script>
+		const requestUrl = 'http://127.0.0.1:8888/parks-and-rec.jpg'
+		document.getElementById('requestUrl').innerHTML = requestUrl
+
+		const headRequest = () => {
+			fetch(requestUrl, {
+					mode: 'no-cors'
+				})
+				.then(response => {
+					// response.text() will show promise
+					const successText = 'Request successful'
+					document.getElementById('success').innerHTML = successText
+				})
+				.catch(error => {
+					console.log('Request error', error)
+				});
+		}
+	</script>
+</body>
+</html>
