@@ -24,6 +24,35 @@ Here are my reference notes for the Google Mobile Web Specialist Certification t
     - [Promises](#promises)
 - [Mobile web forms](#mobile-web-forms)
 
+## Notes
+
+### To Learn
+
+- Fetch image from different domain, cors and get response.
+- Setup service worker to cache shell files and make offline accessible. Get from cache first, only network if no cache.
+- With SPA have service worker show 404 page on error.
+- Basically all these things [service worker](https://developers.google.com/certification/mobile-web-specialist/study-guide/pwas).
+- IndexAPI save form data and fill in form in future.
+- Create web worker to run complicated computation, then return result.
+- Add skip navigation button using tab for accessibility.
+- Make inline links accessible.
+- Inline critical css. [Example](https://web.dev/defer-non-critical-css/)
+- Inline JavaScript files for initial rendering only where necessary (or otherwise eliminated, deferred, or marked as async)
+
+### Did
+
+- Use CSS media queries.
+- Use video tag with file type fallbacks.
+- Make button play and pause video.
+- Used picture tag for specific image sizes at specific sizes.
+- Render fetch data to page.
+- Handle fetch errors.
+- Preload resource heavy next page assets.
+- Form best practices.
+    - Add datalist to input.
+    - Add labels to inputs.
+    - Add appropriate type, name, pattern(regex), maxlength, and autocomplete attributes.
+
 ## Study Guide Sections
 
 ### Basic website layout and styling
