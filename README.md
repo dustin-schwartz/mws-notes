@@ -3,6 +3,7 @@ Here are my reference notes for the Google Mobile Web Specialist Certification t
 
 ## Resources
 
+- [Mobile Web Specialist Home](https://developers.google.com/certification/mobile-web-specialist)
 - [Study Guide: Mobile Web Specialist Certification](https://developers.google.com/certification/mobile-web-specialist/study-guide)
 - [PWA Training Gitub](https://github.com/google-developer-training/pwa-training-labs)
 - [Yahya Elharony Guide](https://github.com/elharony/google-mobile-web-specialist-certification-guide)
